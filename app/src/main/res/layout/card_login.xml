@@ -92,11 +92,10 @@
 
                     <Button
                         android:id="@+id/btn_login_log_in"
-                        style="@style/Widget.AppCompat.Button.Colored"
+                        style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|bottom"
-                        android:background="@color/light_orange"
                         android:text="Log In" />
                 </FrameLayout>
 
@@ -113,7 +112,7 @@
                     android:padding="8dp"
                     android:layout_height="wrap_content"
                     android:text="Login with facebook too lol"
-                    android:background="@color/material_blue_800"
+                    android:background="@color/material_yellow_900"
                     android:layout_gravity="center" />
             </LinearLayout>
         </FrameLayout>

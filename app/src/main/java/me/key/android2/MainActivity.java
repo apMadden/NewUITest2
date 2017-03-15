@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             keySingleCardViewModels.add(new KeySingleCardViewModel(KEY_IMAGES[i], KEY_NAMES[i], 12));
         }
         keyGroupCardViewModels = new ArrayList<>();
-        keyGroupCardViewModels.add(new KeyGroupCardViewModel("Bleeker Street Apartments", keySingleCardViewModels));
+        keyGroupCardViewModels.add(new KeyGroupCardViewModel("Bleeker Street Apartments", keySingleCardViewModels, this));
         keyChainViewModel = new KeyChainViewModel("", new LoginCardViewModel("", this), promoImageUrls, keySingleCardViewModels, keyGroupCardViewModels, this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setKeyChainViewModel(keyChainViewModel);
@@ -60,6 +61,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         //initializeFragment(savedInstanceState);
     }
 
+    public void expandButtonPressed(View v) {
+        Log.i(TAG, "expandButtonPressed: 1");
+        keyGroupCardViewModels.get(0).toggleExpand(v.getRootView().findViewById(R.id.cv_keychain_single_key_temp));
+    }
     public void handleLoginButtonPressed(View v) {
 
     }

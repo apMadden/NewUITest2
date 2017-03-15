@@ -19,6 +19,6 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="HELLO" />
+            android:text="PUT ROTATING PROMOTIONS HERE TO LORE PEOPLE INTO BUYING STUFF" />
     </android.support.v7.widget.CardView>
 </layout>

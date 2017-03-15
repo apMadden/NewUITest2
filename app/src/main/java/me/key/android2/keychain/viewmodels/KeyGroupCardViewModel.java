@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 import me.key.android2.KeyMeViewModel;
 import me.key.android2.R;
+import me.key.android2.keychain.KeyChainViewModel;
+import me.key.android2.keychain.KeyChainViewModelInterface;
 
 /**
  * Created by Andy on 3/14/2017.
@@ -22,13 +24,15 @@ public class KeyGroupCardViewModel extends KeyMeViewModel {
     private String keyGroupName;
     private String numberOfKeys;
     private ArrayList<KeySingleCardViewModel> keys;
+    private KeyChainViewModelInterface callback;
     public final ObservableInt position = new ObservableInt();
     public final ObservableBoolean keyExpanded = new ObservableBoolean(false);
 
-    public KeyGroupCardViewModel(String keyGroupName, ArrayList<KeySingleCardViewModel> keys) {
+    public KeyGroupCardViewModel(String keyGroupName, ArrayList<KeySingleCardViewModel> keys, KeyChainViewModelInterface callback) {
         this.keyGroupName = keyGroupName;
         this.keys = keys;
-        this.numberOfKeys = Integer.toString(keys.size());
+        this.numberOfKeys = "You have " + Integer.toString(keys.size()) + "keys in this key group.";
+        this.callback = callback;
     }
 
     public KeySingleCardViewModel getSearchedKey() {
@@ -39,7 +43,8 @@ public class KeyGroupCardViewModel extends KeyMeViewModel {
 
     }
 
-    public void onButtonClick(View v) {
+    public void toggleExpand(View v) {
+        v.getRootView().findViewById(R.id.cv_keychain_single_key_temp).setVisibility(View.VISIBLE);
         if (keyExpanded.get()) {
             Log.i("hey", "onClick: 1");
             collapse(v.getRootView().findViewById(R.id.cv_keychain_single_key_temp));

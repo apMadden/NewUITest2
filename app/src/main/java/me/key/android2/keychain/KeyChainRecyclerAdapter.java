@@ -42,9 +42,6 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
         this.numberOfKeyGroups = keyGroupCardViewModels.size();
         this.keyCardModels.addAll(keyGroupCardViewModels);
         this.keyCardModels.addAll(keySingleCardViewModels);
-        for (int i = 0; i < keyCardModels.size(); i++) {
-            Log.i(TAG, "KeyChainRecyclerAdapter: keyCarModels index " + i + " is of class group ---- " + (keyCardModels.get(i).getClass() == KeyGroupCardViewModel.class));
-        }
         this.offset = (showLoginCard ? 3 : 2);
     }
     /*
@@ -78,21 +75,15 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
 
     @Override
     public int getItemViewType(int position) {
-        Log.i(TAG, "getItemViewType: position = " + position);
         if (position == 0) {
-            Log.i(TAG, "getItemViewType: findKiosk : position = " + position);
             return R.layout.card_find_kiosk;
         } else if (position == 1) {
-            Log.i(TAG, "getItemViewType: login/promo : position = " + position);
             return (showLoginCard ? R.layout.card_login : R.layout.card_promo);
         } else if (position == 2 && showLoginCard) {
-            Log.i(TAG, "getItemViewType: promo : position = " + position);
             return R.layout.card_promo;
         } else if (keyCardModels.get(position-3).getClass() == KeyGroupCardViewModel.class){
-            Log.i(TAG, "getItemViewType: group : position = " + position);
             return R.layout.card_key_group;
         } else {
-            Log.i(TAG, "getItemViewType: single : position = " + position);
             return R.layout.card_key_single_avatar;
         }
     }
