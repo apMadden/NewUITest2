@@ -1,0 +1,24 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="me.key.android2.keychain.viewmodels.PromoCardViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_promo_"
+        style="@style/KeySingleCardItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/iv_find_a_kiosk"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="HELLO" />
+    </android.support.v7.widget.CardView>
+</layout>

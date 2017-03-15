@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f5a50d</color>
+    <color name="colorPrimaryDark">#f18d05</color>
+    <color name="colorAccent">#00d2a9</color>
+
+    <color name="oldColorAccent">#f7b512</color>
+
+    <color name="mcgpalette0_50">#fef6e3</color>
+    <color name="mcgpalette0_100">#fde9b8</color>
+    <color name="mcgpalette0_200">#fbda89</color>
+    <color name="mcgpalette0_300">#f9cb59</color>
+    <color name="mcgpalette0_400">#f8c036</color>
+    <color name="mcgpalette0_500">#f7b512</color>
+    <color name="mcgpalette0_600">#f6ae10</color>
+    <color name="mcgpalette0_700">#f5a50d</color>
+    <color name="mcgpalette0_800">#f39d0a</color>
+    <color name="mcgpalette0_900">#f18d05</color>
+    <color name="mcgpalette0_A100">#ffffff</color>
+    <color name="mcgpalette0_A200">#fff3e6</color>
+    <color name="mcgpalette0_A400">#ffdbb3</color>
+    <color name="mcgpalette0_A700">#ffcf99</color>
+    <color name="suggested_toolbar">#212121</color>
+    <color name="toolbar_color">#1C2022</color>
+    <color name="window_background">#252A2C</color>
+
+    <color name="suggested_card_dialog">#424242</color>
+    <color name="suggested_accent">#f1a500</color>
+    <color name="card_background">#2e3538</color>
+    <color name="green_promo_code">#00D2A9</color>
+
+    <color name="orange">#f1a500</color>
+    <color name="keyme_black">#1b1c1d</color>
+    <color name="keyme_gray">#848687</color>
+    <color name="keyme_white">#FFFFFF</color>
+
+    <color name="keyme_red">#ff0707</color>
+    <color name="bg_top">#252a2c</color>
+    <color name="bg_middle">#202526</color>
+    <!-- 24292b -->
+
+    <!-- 212527 -->
+    <color name="bg_bottom">#1b1f21</color>
+    <!-- 1c1f21 -  1c2021 -->
+    <color name="bg_gray_top">#4d5252</color>
+    <color name="bg_gray_bottom">#41484a</color>
+    <color name="keyme_gray_border">#313232</color>
+    <color name="menu_tapped">#282f31</color>
+    <color name="menu_tapped_semi_transparent">#4D282f31</color>
+    <!-- #4D = 30% -->
+    <color name="border_color">#FFFFFF</color>
+    <color name="scan_gray_top">#797672</color>
+    <color name="scan_gray_middle">#605d5c</color>
+    <color name="scan_gray_bottom">#515054</color>
+    <color name="scan_dark_bg">#252a2c</color>
+
+    <!-- 11/18/04 Designs -->
+    <color name="keyme_button_dark_gray">#111516</color>
+    <color name="keyme_button_light_gray">#23292b</color>
+    <color name="light_orange">#ffc539</color>
+    <color name="keyme_light_gray">#c4c8d2</color>
+
+    <!-- Xiao's assets -->
+    <color name="keyme_yellow">#f7b512</color>
+    <color name="keyme_button_yellow">#fcb236</color>
+    <color name="keyme_dialog_gray_text">#4B4B4B</color>
+    <color name="keyme_dialog_white">#D7D7D7</color>
+</resources>
