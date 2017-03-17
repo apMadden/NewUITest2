@@ -42,7 +42,7 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
         this.numberOfKeyGroups = keyGroupCardViewModels.size();
         this.keyCardModels.addAll(keyGroupCardViewModels);
         this.keyCardModels.addAll(keySingleCardViewModels);
-        this.offset = (showLoginCard ? 3 : 2);
+        this.offset = (showLoginCard ? 4 : 3);
     }
     /*
     public void destroy() {
@@ -78,10 +78,12 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
         if (position == 0) {
             return R.layout.card_find_kiosk;
         } else if (position == 1) {
+            return R.layout.card_scan_a_new_key;
+        } else if (position == 2) {
             return (showLoginCard ? R.layout.card_login : R.layout.card_promo);
-        } else if (position == 2 && showLoginCard) {
+        } else if (position == 3 && showLoginCard) {
             return R.layout.card_promo;
-        } else if (keyCardModels.get(position-3).getClass() == KeyGroupCardViewModel.class){
+        } else if (keyCardModels.get(position-4).getClass() == KeyGroupCardViewModel.class){
             return R.layout.card_key_group;
         } else {
             return R.layout.card_key_single_avatar;
@@ -101,6 +103,8 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
         } else if (holder.viewType == R.layout.card_login) {
             holder.bindTo(loginCardViewModel);
         } else if (holder.viewType == R.layout.card_promo) {
+            holder.bindTo(promoImageUrls);
+        } else if (holder.viewType == R.layout.card_scan_a_new_key) {
             holder.bindTo(promoImageUrls);
         } else if (holder.viewType == R.layout.card_key_group) {
             ((KeyGroupCardViewModel)keyCardModels.get(holderPosition - offset)).position.set(holderPosition);

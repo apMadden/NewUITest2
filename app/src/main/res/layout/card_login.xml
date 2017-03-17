@@ -7,7 +7,69 @@
             name="data"
             type="me.key.android2.keychain.viewmodels.LoginCardViewModel"/>
     </data>
+    <android.support.v7.widget.CardView
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:elevation="2dp"
+        android:clickable="true"
+        app:cardBackgroundColor="@color/material_yellow_900"
+        app:cardCornerRadius="2dp">
+        <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:textSize="28dp"
+                    android:textColor="@color/mcgpalette0_500"
+                    android:text="Log in"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="Create an account and receieve a free key alongside the purchase of your first two keys!"
+                    android:textSize="19sp"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/button_create_account"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:onClick="cardCreateAccountClick"
+                android:text="CREATE ACCOUNT"/>
 
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_margin="8dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="cardLogInClick"
+                android:text="LOG IN"
+                style="?android:attr/borderlessButtonStyle"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <!--
     <android.support.v7.widget.CardView
         android:id="@+id/cv_keychain_login"
         style="@style/KeySingleCardItem"
@@ -56,7 +118,7 @@
                         android:imeOptions="actionNext"
                         android:inputType="textEmailAddress"
                         android:nextFocusDown="@+id/et_login_password"
-                        android:text="Fuck." />
+                        android:text="@={data.emailAddress}" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -74,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:imeOptions="actionGo"
                         android:inputType="textPassword"
-                        android:text="You" />
+                        android:text="@={data.password}" />
                 </android.support.design.widget.TextInputLayout>
 
                 <FrameLayout
@@ -116,5 +178,5 @@
                     android:layout_gravity="center" />
             </LinearLayout>
         </FrameLayout>
-    </android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>-->
 </layout>

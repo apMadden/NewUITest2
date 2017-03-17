@@ -90,6 +90,7 @@
                 style="@style/KeyGroupDropdownCardItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardElevation="6dp"
                 android:visibility="gone"
                 app:cardBackgroundColor="@color/material_teal_700">
 
