@@ -4,6 +4,13 @@
     <color name="colorPrimaryDark">#f18d05</color>
     <color name="colorAccent">#00d2a9</color>
 
+    <color name="rob_green">#59B68F</color>
+    <color name="rob_blue2">#21589F</color>
+    <color name="rob_blue">#215874</color>
+    <color name="rob_orange">#E69C90</color>
+    <color name="rob_teal">#5EC3C5</color>
+    <color name="rob_purple">#7F80C9</color>
+
     <color name="oldColorAccent">#f7b512</color>
 
     <color name="mcgpalette0_50">#fef6e3</color>

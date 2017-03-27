@@ -79,11 +79,11 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
             return R.layout.card_find_kiosk;
         } else if (position == 1) {
             return R.layout.card_scan_a_new_key;
-        } else if (position == 2) {
+        } else if (position == 2) {/*
             return (showLoginCard ? R.layout.card_login : R.layout.card_promo);
-        } else if (position == 3 && showLoginCard) {
-            return R.layout.card_promo;
-        } else if (keyCardModels.get(position-4).getClass() == KeyGroupCardViewModel.class){
+        } else if (position == 3 && showLoginCard) {*/
+            return R.layout.card_login;
+        } else if (keyCardModels.get(position-3).getClass() == KeyGroupCardViewModel.class){
             return R.layout.card_key_group;
         } else {
             return R.layout.card_key_single_avatar;
@@ -107,11 +107,11 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
         } else if (holder.viewType == R.layout.card_scan_a_new_key) {
             holder.bindTo(promoImageUrls);
         } else if (holder.viewType == R.layout.card_key_group) {
-            ((KeyGroupCardViewModel)keyCardModels.get(holderPosition - offset)).position.set(holderPosition);
-            holder.bindTo(keyCardModels.get(holderPosition - offset));
+            ((KeyGroupCardViewModel)keyCardModels.get(holderPosition - 3)).position.set(holderPosition);
+            holder.bindTo(keyCardModels.get(holderPosition - 3));
         } else {
-            ((KeySingleCardViewModel)keyCardModels.get(holderPosition - offset)).position.set(holderPosition);
-            holder.bindTo(keyCardModels.get(holderPosition - offset));
+            ((KeySingleCardViewModel)keyCardModels.get(holderPosition - 3)).position.set(holderPosition);
+            holder.bindTo(keyCardModels.get(holderPosition - 3));
         }
     }
 }

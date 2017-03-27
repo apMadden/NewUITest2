@@ -48,6 +48,9 @@ public final class BindingUtils {
      * @param imageView
      * @param url
      */
+
+
+    /**
     @BindingAdapter(value = {"imageURL", "transform"}, requireAll = false)
     public static void setImageURL(ImageView imageView, String url, Boolean transform) {
         Context context = imageView.getContext();
@@ -113,7 +116,7 @@ public final class BindingUtils {
                 .into(imageView);
     }
 
-
+    */
 
     /**
      *
@@ -136,6 +139,9 @@ public final class BindingUtils {
         rv.getItemAnimator().setChangeDuration(195);
     }
 
+
+    /**
+
     @BindingAdapter("keySingleCardViewModels")
     public static void bindKeyHistoryRecyclerView(RecyclerView rv, KeySingleCardViewModel keySingleCardViewModel) {
         rv.setHasFixedSize(true);
@@ -148,6 +154,8 @@ public final class BindingUtils {
         rv.getItemAnimator().setMoveDuration(225);
         rv.getItemAnimator().setChangeDuration(195);
     }
+
+    */
 
     /**
      *
@@ -164,87 +172,5 @@ public final class BindingUtils {
     @BindingAdapter("invisible")
     public static void bindInvisible(View view, boolean b) {
         view.setVisibility(b ? View.INVISIBLE : View.VISIBLE);
-    }
-
-    @BindingAdapter("hideIfZeroSavings")
-    public static void bindHideIfZeroSavings(View view, String savingsDisplay) {
-        if (savingsDisplay == null) {
-            view.setVisibility(View.GONE);
-            return;
-        }
-        view.setVisibility(savingsDisplay.equals("Savings: $0.00") ? View.GONE : View.VISIBLE);
-    }
-
-    @BindingAdapter("hideAddressTwo")
-    public static void bindHideAddressTwo(View view, String addressTwo) {
-        if (addressTwo == null) {
-            view.setVisibility(View.GONE);
-            return;
-        }
-        view.setVisibility(addressTwo.isEmpty() ? View.GONE : View.VISIBLE);
-    }
-
-    @BindingAdapter("hideIfEmpty")
-    public static void bindHideIfEmpty(View view, String s) {
-        view.setVisibility(s.isEmpty() ? View.GONE : View.VISIBLE);
-    }
-    @BindingAdapter("hideIfNull")
-    public static void bindHideIfNull(View view, String s) {
-        view.setVisibility(s == null ? View.GONE : View.VISIBLE);
-    }
-
-    @BindingAdapter("visibleOrGone")
-    public static void bindVisibleOrGone(View view, boolean b) {
-        view.setVisibility(b ? View.VISIBLE : View.GONE);
-    }
-
-    @BindingAdapter("holdFocus")
-    public static void bindHoldFocus(ViewGroup viewgroup, boolean holdFocus) {
-        viewgroup.setDescendantFocusability(holdFocus ? ViewGroup.FOCUS_BEFORE_DESCENDANTS : ViewGroup.FOCUS_AFTER_DESCENDANTS);
-    }
-
-
-
-
-    /**
-     *
-     *
-     *     BindingConversions
-     *
-     */
-
-    @BindingConversion
-    public static String convertDoubleToCurrency(Double cost) {
-        return NumberFormat.getCurrencyInstance().format(cost);
-    }
-
-    @BindingConversion
-    public static int convertObservableBooleanToVisibility(ObservableBoolean b) {
-        return b.get() ? View.VISIBLE : View.GONE;
-    }
-
-    @BindingConversion
-    public static int convertBooleanToVisibility(boolean b) {
-        return b ? View.VISIBLE : View.GONE;
-    }
-
-    @BindingConversion
-    public static ColorDrawable convertColorToDrawable(int color) {
-        return new ColorDrawable(color);
-    }
-
-    // We don't use this its an example for me for future reference.
-    // Use case: android:textColor="@{object.myEnum}"
-    enum MyEnum {VALUE1, VALUE2, VALUE3}
-    @BindingConversion
-    public static @ColorRes int convertEnumToColor(MyEnum value) {
-        switch (value) {
-            case VALUE1:
-                return R.color.bg_middle;
-            case VALUE2:
-                return R.color.window_background;
-            default:
-                return R.color.window_background;
-        }
     }
 }

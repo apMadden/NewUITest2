@@ -12,12 +12,13 @@ import me.key.android2.keychain.viewmodels.LoginCardViewModel;
  */
 
 public class KeyChainViewModel extends KeyMeViewModel {
-    public KeyChainViewModelInterface keyChainViewModelInterface;
+    private KeyChainViewModelInterface keyChainViewModelInterface;
+    private String kioskImageUrl;
+    private LoginCardViewModel loginCardViewModel;
+    private ArrayList<String> promoImageUrls;
     private ArrayList<KeySingleCardViewModel> keySingleCardViewModels;
     private ArrayList<KeyGroupCardViewModel> keyGroupCardViewModels;
-    private ArrayList<String> promoImageUrls;
-    private LoginCardViewModel loginCardViewModel;
-    private String kioskImageUrl;
+
     public KeyChainViewModel(String kioskImageUrl, LoginCardViewModel loginCardViewModel, ArrayList<String> promoImageUrls, ArrayList<KeySingleCardViewModel> keySingleCardViewModels, ArrayList<KeyGroupCardViewModel> keyGroupCardViewModels, KeyChainViewModelInterface keyChainViewModelInterface) {
         this.keyChainViewModelInterface = keyChainViewModelInterface;
         this.kioskImageUrl = kioskImageUrl;

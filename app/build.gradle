@@ -29,6 +29,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.flurgle:camerakit:0.9.15'
     compile 'com.google.auto.value:auto-value:1.2'
     compile 'com.dmitrymalkovich.android:material-design-dimens:1.4'
     compile ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.10.4@aar'){

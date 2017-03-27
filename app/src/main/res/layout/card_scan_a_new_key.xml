@@ -22,7 +22,6 @@
             android:layout_gravity="start|top"
             android:paddingTop="16dp"
             android:paddingStart="16dp"
-            android:elevation="1dp"
             android:ems="10"
             android:inputType="textMultiLine"
             android:text="Scan your keys and store \nthem safely\non the \ncloud!"
