@@ -1,6 +1,9 @@
 package me.key.android2.keychain.viewmodels;
 
 import android.databinding.ObservableInt;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -13,16 +16,27 @@ import me.key.android2.keychain.KeyChainViewModel;
  */
 
 public class KeySingleCardViewModel extends KeyMeViewModel {
-    private int keyImageUrl;
+    private Drawable keyImageUrl;
     private String keyName;
     private String kiosksNearby;
     private ArrayList<String> historyItems;
+
+    public int getColorId() {
+        return colorId;
+    }
+
+    public void setColorId(int colorId) {
+        this.colorId = colorId;
+    }
+
+    private int colorId;
     public ObservableInt position = new ObservableInt();
 
-    public KeySingleCardViewModel(int keyImageUrl, String keyName, int kiosksNearby) {
+    public KeySingleCardViewModel(Drawable keyImageUrl, String keyName, int kiosksNearby, int colorId) {
         this.keyImageUrl = keyImageUrl;
         this.keyName = keyName;
         this.kiosksNearby = Integer.toString(kiosksNearby);
+        this.colorId = colorId;
     }
 
     public View.OnClickListener onButtonClick() {
@@ -39,11 +53,11 @@ public class KeySingleCardViewModel extends KeyMeViewModel {
     }
 
 
-    public int getKeyImageUrl() {
+    public Drawable getKeyImageUrl() {
         return keyImageUrl;
     }
 
-    public void setKeyImageUrl(int keyImageUrl) {
+    public void setKeyImageUrl(Drawable keyImageUrl) {
         this.keyImageUrl = keyImageUrl;
     }
 

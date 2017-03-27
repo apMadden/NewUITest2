@@ -46,11 +46,28 @@ public final class BindingUtils {
      * The progress spinner is only used in the "activity_detail.xml" file, after that the image has already been downloaded to cache.
      *
      * @param imageView
-     * @param url
+     * @param resource
      */
 
 
-    /**
+    @BindingAdapter(value = {"imageURL", "transform"}, requireAll = false)
+    public static void setImageResource(ImageView imageView, int resource, Boolean transform) {
+        Context context = imageView.getContext();
+        final ObjectAnimator anim = ObjectAnimator.ofInt(imageView, "ImageLevel", 0, 10000); // http://stackoverflow.com/questions/4651618/is-it-possible-to-have-an-animated-drawable
+        anim.setRepeatCount(ObjectAnimator.INFINITE);
+        anim.start();
+
+        Glide.with(context).load(imageView.getResources().getDrawable(resource))
+                //.placeholder(R.drawable.progressbar_keyme)
+                //.skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .dontAnimate()
+                .override(100, 200)
+                .centerCrop()
+                .dontTransform()
+                .into(imageView);
+    }/**
+
     @BindingAdapter(value = {"imageURL", "transform"}, requireAll = false)
     public static void setImageURL(ImageView imageView, String url, Boolean transform) {
         Context context = imageView.getContext();
@@ -84,7 +101,7 @@ public final class BindingUtils {
                     }
                 })
                 .into(imageView);
-    }
+    }/**
 
     @BindingAdapter("bannerUrl")
     public static void setBannerUrl(ImageView imageView, String url) {
@@ -163,7 +180,10 @@ public final class BindingUtils {
      *
      */
     // General
-
+    @BindingConversion
+    public static ColorDrawable convertColorToDrawable(int color) {
+        return color != 0 ? new ColorDrawable(color) : null;
+    }
     @BindingAdapter("visible")
     public static void bindVisible(View view, boolean b) {
         view.setVisibility(b ? View.VISIBLE : View.INVISIBLE);

@@ -2,6 +2,7 @@ package me.key.android2;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -37,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     ArrayList<String> promoImageUrls;
     ArrayList<KeySingleCardViewModel> keySingleCardViewModels;
     ArrayList<KeyGroupCardViewModel> keyGroupCardViewModels;
-    String KEY_NAMES[] = {"Deka's house", "Home", "Work", "test", "test 9", "Front Door", "back door"};
-    int KEY_IMAGES[] = {R.drawable.key_head_def, R.drawable.key_head_def, R.drawable.key_head_def, R.drawable.key_head_def, R.drawable.key_head_def, R.drawable.key_head_def, R.drawable.key_head_def};
-    //int KEY_CARD_COLORS[] = {R.color.color_card_one, R.color.color_card_two, R.color.color_card_three, R.color.color_card_four, R.color.color_card_one, R.color.color_card_two, R.color.color_card_three};
+    String KEY_NAMES[] = {"Mom's house", "Home", "Work", "Front Door", "back door"};
+    int KEY_IMAGES[] = {R.drawable.key_head_blue, R.drawable.key_head_green, R.drawable.key_head_orange, R.drawable.key_head_purple, R.drawable.key_head_teal};
+    int KEY_CARD_COLORS[] = {R.color.rob_blue, R.color.rob_green, R.color.rob_orange, R.color.rob_purple, R.color.rob_teal};
     //int ICONS[] = {R.drawable.ic_home_black_24dp, R.drawable.ic_map_black_24dp, R.drawable.ic_store_black_24dp, R.drawable.ic_shopping_cart_black_24dp, R.drawable.ic_account_box_black_24dp, R.drawable.ic_help_black_24dp, R.drawable.ic_build_black_24dp};
 
     @Override
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Bundle extras = getIntent().getExtras();
         keySingleCardViewModels = new ArrayList<>();
         for(int i=0; i< KEY_NAMES.length;i++) {
-            keySingleCardViewModels.add(new KeySingleCardViewModel(KEY_IMAGES[i], KEY_NAMES[i], 12));
+            keySingleCardViewModels.add(new KeySingleCardViewModel(getApplicationContext().getDrawable(KEY_IMAGES[i]), KEY_NAMES[i], 12, KEY_CARD_COLORS[i]));
         }
         keyGroupCardViewModels = new ArrayList<>();
         keyGroupCardViewModels.add(new KeyGroupCardViewModel("Bleeker Street Apartments", keySingleCardViewModels, this));

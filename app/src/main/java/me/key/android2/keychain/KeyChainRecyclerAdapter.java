@@ -70,7 +70,7 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
 
     @Override
     public int getItemCount() {
-        return keySingleCardViewModels.size() + keyGroupCardViewModels.size() + offset;
+        return keySingleCardViewModels.size() + keyGroupCardViewModels.size() + 3;
     }
 
     @Override
@@ -83,10 +83,10 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
             return (showLoginCard ? R.layout.card_login : R.layout.card_promo);
         } else if (position == 3 && showLoginCard) {*/
             return R.layout.card_login;
-        } else if (keyCardModels.get(position-3).getClass() == KeyGroupCardViewModel.class){
+        } else if (position == 3) { //(keyCardModels.get(position-3).getClass() == KeyGroupCardViewModel.class){
             return R.layout.card_key_group;
         } else {
-            return R.layout.card_key_single_avatar;
+            return R.layout.card_key_single;
         }
     }
 
