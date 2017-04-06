@@ -3,12 +3,16 @@
     package="me.key.android2" >
 
     <application
+        android:name=".KeyMeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="f4673e261987bbed9e9de5f6f8891908553014b4" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

@@ -9,4 +9,5 @@ import android.view.View;
 public interface KeyChainViewModelInterface {
     void handleLoginButtonPressed(View v);
     void expandButtonPressed(View v);
+    void handleCardFlip(View v);
 }

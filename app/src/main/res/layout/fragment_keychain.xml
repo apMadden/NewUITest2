@@ -1,0 +1,21 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="keyChainViewModel"
+            type="me.key.android2.keychain.KeyChainViewModel"/>
+    </data>
+<android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="60dp"
+    android:clipToPadding="false"
+    app:kioskImageUrl="@{keyChainViewModel.kioskImageUrl}"
+    app:loginCardViewModel="@{keyChainViewModel.loginCardViewModel}"
+    app:promoImageUrls="@{keyChainViewModel.promoImageUrls}"
+    app:keySingleCardViewModels="@{keyChainViewModel.keySingleCardViewModels}"
+    app:keyGroupCardViewModels="@{keyChainViewModel.keyGroupCardViewModels}"/>
+
+</layout>

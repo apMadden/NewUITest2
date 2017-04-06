@@ -92,6 +92,9 @@ public class KeyChainRecyclerAdapter extends RecyclerView.Adapter<KeyChainViewHo
 
     @Override
     public KeyChainViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        if (viewType == R.layout.card_key_single) {
+            //final com.ramotion.foldingcell.FoldingCell fc = (com.ramotion.foldingcell.FoldingCell) viewGroup;
+        }
         return KeyChainViewHolder.create(LayoutInflater.from(viewGroup.getContext()), viewGroup, viewType);
     }
 

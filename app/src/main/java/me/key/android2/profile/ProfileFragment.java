@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import me.key.android2.Constants;
 import me.key.android2.KeyMeFragment;
 
 /**
@@ -13,6 +14,27 @@ import me.key.android2.KeyMeFragment;
  */
 
 public class ProfileFragment extends KeyMeFragment {
+    public static final String TAG = ProfileFragment.class.getSimpleName();
+
+
+    public static ProfileFragment newInstance(long id, boolean useTransition, String transitionName) {
+        ProfileFragment fragment = new ProfileFragment();
+        Bundle args = new Bundle();
+        args.putLong(Constants.ARTIST_ID, id);
+        args.putBoolean("transition", useTransition);
+        if (useTransition)
+            args.putString("transition_name", transitionName);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            //artistID = getArguments().getLong(Constants.ARTIST_ID);
+        }
+    }
     /**
      * Called to have the fragment instantiate its user interface view.
      * This is optional, and non-graphical fragments can return null (which
