@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 
-import me.key.android2.network.model.Shipping;
-
 /**
  * Created by Andy on 4/6/2017.
  */
@@ -20,7 +18,7 @@ public final class PreferencesUtils {
     // The only values that are stored between sessions.
     private String last_login = "";
     private String settings_token = "";
-    private Shipping shipping;
+    //private Shipping shipping;
 
 
 

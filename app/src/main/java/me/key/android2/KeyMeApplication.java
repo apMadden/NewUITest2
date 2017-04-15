@@ -4,8 +4,6 @@ import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import io.fabric.sdk.android.Fabric;
 import pl.tajchert.nammu.Nammu;
@@ -38,11 +36,6 @@ public class KeyMeApplication extends Application {
             Timber.plant(new Timber.DebugTree());
         }
         Timber.plant(new CrashlyticsTree());
-
-
-
-        ImageLoaderConfiguration localImageLoaderConfiguration = new ImageLoaderConfiguration.Builder(this).build();
-        ImageLoader.getInstance().init(localImageLoaderConfiguration);
         Nammu.init(this);
     }
 }

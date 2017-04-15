@@ -18,4 +18,15 @@
     <dimen name="small_margin">10dp</dimen>
     <dimen name="tiny_margin">8dp</dimen>
     <dimen name="tiny_tiny_margin">4dp</dimen>
+
+
+
+
+
+
+
+
+
+
+    <dimen name="margin_less">8dp</dimen>
 </resources>

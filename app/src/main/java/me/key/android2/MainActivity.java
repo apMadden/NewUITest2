@@ -1,6 +1,7 @@
 package me.key.android2;
 
 import android.Manifest;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+import me.key.android2.camera.Camera2Activity;
 import me.key.android2.databinding.ActivityMainBinding;
 import me.key.android2.keychain.KeyChainFragment;
 import me.key.android2.keychain.KeyChainViewModel;
@@ -67,25 +69,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sMainActivity = this;
+        Log.i(TAG, "onCreate: HUHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH                       a");
         action = getIntent().getAction();
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
-        Bundle extras = getIntent().getExtras();
-
-        navigationMap.put(Constants.NAVIGATE_KEYCHAIN, R.id.navigation_keychain);
-        navigationMap.put(Constants.NAVIGATE_MAP, R.id.navigation_map);
-        navigationMap.put(Constants.NAVIGATE_PROFILE, R.id.navigation_profile);
-
-// get our folding cell
-
-        binding.setKeyChainViewModel(keyChainViewModel);
-
-        if (Utils.isMarshmallow()) {
-            checkPermissionAndThenLoad();
-        } else {
-            loadEverything();
-        }
 
         keySingleCardViewModels = new ArrayList<>();
         for(int i=0; i< KEY_NAMES.length;i++) {
@@ -96,91 +84,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         keyChainViewModel = new KeyChainViewModel("", new LoginCardViewModel("", this), promoImageUrls, keySingleCardViewModels, keyGroupCardViewModels, this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        binding.setKeyChainViewModel(keyChainViewModel);
+
         binding.executePendingBindings();
         //initializeFragment(savedInstanceState);
     }
 
-    Handler navDrawerRunnable = new Handler();
-    Runnable runnable;
-
-    public Runnable loadFragment(String fragmentTag) {
-        return loadFragment(navigationMap.get(fragmentTag));
-    }
-
-    public Runnable loadFragment(final int menuItem) {
-        runnable = null;
-        final KeyMeFragment fragment;
-
-        switch (menuItem) {
-            case R.id.navigation_keychain:
-                binding.navigation.setSelected(true);
-                mTextMessage.setText(R.string.title_home);
-                fragment = new KeyChainFragment();
-                break;
-            case R.id.navigation_map:
-                binding.navigation.setSelected(true);
-                mTextMessage.setText(R.string.title_map);
-                fragment = new MapFragment();
-                break;
-            case R.id.navigation_profile:
-                mTextMessage.setText(R.string.title_profile);
-                fragment = new ProfileFragment();
-                break;
-            default:
-                return null;
-        }
-        return new Runnable() {
-            public void run() {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.hide(getSupportFragmentManager().findFragmentById(R.id.fragment_container));
-                transaction.replace(R.id.fragment_container, fragment).commit();
-
-            }
-        };
-
-    }
-
-    /*
-    Runnable navigateNowplaying = new Runnable() {
-        public void run() {
-            navigateLibrary.run();
-            startActivity(new Intent(MainActivity.this, NowPlayingActivity.class));
-        }
-    };*/
-    private void loadEverything() {
-        loadFragment(action);
-    }
-    private void checkPermissionAndThenLoad() {
-        //check for permission
-        if (Nammu.checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            loadEverything();
-        } else {
-            if (Nammu.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                Snackbar.make(binding.navigation, "Timber will need to read external storage to display songs on your device.",
-                        Snackbar.LENGTH_INDEFINITE)
-                        .setAction("OK", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Nammu.askForPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE, permissionReadstorageCallback);
-                            }
-                        }).show();
-            } else {
-                Nammu.askForPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE, permissionReadstorageCallback);
-            }
-        }
-    }
-
-    final PermissionCallback permissionReadstorageCallback = new PermissionCallback() {
-        @Override
-        public void permissionGranted() {
-            loadEverything();
-        }
-
-        @Override
-        public void permissionRefused() {
-            finish();
-        }
-    };
     public void expandButtonPressed(View v) {
         Log.i(TAG, "expandButtonPressed: 1");
         keyGroupCardViewModels.get(0).toggleExpand(v.getRootView().findViewById(R.id.cv_keychain_single_key_temp));
@@ -192,80 +101,27 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public void handleLoginButtonPressed(View v) {
 
     }
-
-    private void initializeFragment(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            mFragment = (Fragment) getSupportFragmentManager().getFragment(savedInstanceState, STATE_ACTIVE_FRAGMENT);
-        }
-        if (mFragment == null) {
-            //mFragment = new KeyChainFragment();
-        }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        //fragmentManager.beginTransaction().replace(R.id.content,                mFragment).commit();
+    public void cardLogInClick(View v) {
+        startActivity(new Intent(this, Camera2Activity.class));
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        loadFragment(item.getItemId());
-        /*
         switch (item.getItemId()) {
-            case R.id.navigation_home:
+            case R.id.navigation_keychain:
                 binding.navigation.setSelected(true);
-                loadFragment(KeyChainFragment.TAG);
+                //loadFragment(KeyChainFragment.TAG);
                 mTextMessage.setText(R.string.title_home);
                 return true;
-            case R.id.navigation_dashboard:
+            case R.id.navigation_map:
                 binding.navigation.setSelected(true);
                 mTextMessage.setText(R.string.title_map);
                 return true;
-            case R.id.navigation_notifications:
-                mTextMessage.setText(R.string.title_profile);
+            case R.id.navigation_profile:
+                mTextMessage.setText("CAMERA");
                 return true;
-        }*/
+        }
         return false;
-    }
-    /**
-     * Used to handle result of askForPermission for Contacts Permission, in better way than
-     * onRequestPermissionsResult() and handling with big switch statement
-     */
-    final PermissionCallback permissionContactsCallback = new PermissionCallback() {
-        @Override public void permissionGranted() {
-            boolean hasAccess = PermissionTools.accessContacts(MainActivity.this);
-            Toast.makeText(MainActivity.this, "Access granted = " + hasAccess, Toast.LENGTH_SHORT).show();
-        }
-
-        @Override public void permissionRefused() {
-            boolean hasAccess = PermissionTools.accessContacts(MainActivity.this);
-            Toast.makeText(MainActivity.this, "Access granted = " + hasAccess, Toast.LENGTH_SHORT).show();
-        }
-    };
-
-    /**
-     * Used to handle result of askForPermission for Location, in better way than
-     * onRequestPermissionsResult() and handling with big switch statement
-     */
-    final PermissionCallback permissionLocationCallback = new PermissionCallback() {
-        @Override public void permissionGranted() {
-            boolean hasAccess = PermissionTools.accessLocation(MainActivity.this);
-            Toast.makeText(MainActivity.this, "Access granted = " + hasAccess, Toast.LENGTH_SHORT).show();
-        }
-
-        @Override public void permissionRefused() {
-            boolean hasAccess = PermissionTools.accessLocation(MainActivity.this);
-            Toast.makeText(MainActivity.this, "Access granted = " + hasAccess, Toast.LENGTH_SHORT).show();
-        }
-    };
-    @Override
-    public void onRequestPermissionsResult(
-            int requestCode, String[] permissions, int[] grantResults) {
-        Nammu.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-    private void addBackstackListener() {
-        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-                getSupportFragmentManager().findFragmentById(R.id.fragment_container).onResume();
-            }
-        });
     }
 }
